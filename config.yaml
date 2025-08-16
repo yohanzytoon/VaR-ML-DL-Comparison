@@ -1,0 +1,40 @@
+# Default configuration for the VaR project
+
+data:
+  use_synthetic: true          # set to false to pull real data with yfinance
+  tickers: ["SPY", "QQQ", "TLT", "GLD", "USO"]
+  start_date: "2016-01-01"
+  end_date: "2024-05-31"
+
+splits:
+  train_end: "2022-12-31"
+  val_end: "2023-12-31"
+  test_start: "2024-01-01"
+
+var:
+  alpha: 0.01
+  window: 252                  # rolling window length for parametric/historical/MC
+  monte_carlo_sims: 10000
+
+ml:
+  vol_target_window: 5         # realized vol K for ML-Param target
+  feature_windows: [5, 10, 20]
+  L_lags: 5                    # count of abs/sqr lag features
+
+dl:
+  sequence_length: 20          # LSTM/GRU sequence length
+  vol_target_window: 5
+  epochs: 10                   # keep small for quick demo
+  batch_size: 32
+  dropout: 0.2
+
+ae:
+  L_AE: 10
+  encoding_dim: 16
+  threshold_c: 1.5
+  lambda_multiplier: 0.5
+
+outputs:
+  root: "./outputs"
+  plots: "./outputs/plots"
+  backtests: "./outputs/backtests"
