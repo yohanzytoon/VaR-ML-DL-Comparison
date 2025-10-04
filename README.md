@@ -1,5 +1,7 @@
 # VaR Project: Traditional vs ML vs DL
 
+
+
 End-to-end, **reproducible** pipeline to compute and backtest 1% daily VaR using:
 - Traditional methods: Parametric (variance–covariance), Historical, Monte Carlo
 - ML: LightGBM for volatility (ML-Parametric) and direct quantile (ML-Quantile)
